@@ -1,0 +1,1 @@
+Put here Smarty's libs folder
