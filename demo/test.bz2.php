@@ -5,14 +5,14 @@
  * @package Example-application
  */
 
-require('phar://./../smarty-3.1.13.phar.bz2');
+require_once 'phar://./../compiled/smarty.bz2';
 
 $smarty = new Smarty;
 $smarty->debugging = true;
 //Note: That "debug.tpl" inside phar is not accessible))
-$smarty->debug_tpl = 'debug.tpl';
-$smarty->caching = true;
-$smarty->cache_lifetime = 120;
+$smarty->debug_tpl = SMARTY_DEBUG_TPL;
+$smarty->caching = false;
+$smarty->cache_lifetime = 1;
 
 $smarty->assign("Name","Fred Irving Johnathan Bradley Peppergill",true);
 $smarty->assign("FirstName",array("John","Mary","James","Henry"));
@@ -28,5 +28,3 @@ $smarty->assign("option_output", array("New York","Nebraska","Kansas","Iowa","Ok
 $smarty->assign("option_selected", "NE");
 
 $smarty->display('index.tpl');
-
-?>
