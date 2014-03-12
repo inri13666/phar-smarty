@@ -19,6 +19,7 @@ $archive = new Phar($filename . '.phar', 0, 'Smarty');
 $archive->buildFromDirectory('libs');
 $bootstrap = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'phar-bootstrap.php');
 $archive->setStub($bootstrap);
+//$archive->compress(Phar::GZ);
 $archive = null;
 unset($archive);
 file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'compiled' . DIRECTORY_SEPARATOR . 'smarty.phar', file_get_contents($filename . '.phar'));
@@ -28,8 +29,8 @@ if (function_exists('gzopen')) {
     if (is_readable($filename . '.gz')) {
         unlink($filename . '.gz');
     }
-    $gz = gzopen($filename . '.gz', 'w');
-    gzwrite($gz, gzcompress(file_get_contents($filename . '.phar'), 9));
+    $gz = gzopen($filename . '.gz', 'w9');
+    gzwrite($gz, file_get_contents($filename . '.phar'));
     gzclose($gz);
     file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . 'compiled' . DIRECTORY_SEPARATOR . 'smarty.gz', file_get_contents($filename . '.gz'));
 }

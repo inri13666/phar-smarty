@@ -12,5 +12,5 @@ if ((!is_readable($debug_tpl_dir . 'debug.tpl'))) {
     file_put_contents($debug_tpl_dir . 'debug.tpl', file_get_contents($basePath . 'debug.tpl'));
 };
 define('SMARTY_DEBUG_TPL', $debug_tpl_dir . 'debug.tpl');
-
 __HALT_COMPILER();
+?>
