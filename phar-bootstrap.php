@@ -3,15 +3,18 @@ Phar::mapPhar();
 
 $basePath = 'phar://' . __FILE__ . '/';
 
+//Append include_path
+@set_include_path(get_include_path() . PATH_SEPARATOR . $basePath);
+
 //Use Smarty Auto-Loader
-define('SMARTY_SPL_AUTOLOAD',1);
+//define('SMARTY_SPL_AUTOLOAD',1);
 
 require_once $basePath . 'Smarty.class.php';
 
 //Avoid Inclusion error on some FastCGI installations
-if(defined('SMARTY_SYSPLUGINS_DIR')){
+/*if(defined('SMARTY_SYSPLUGINS_DIR')){
     include_once SMARTY_SYSPLUGINS_DIR . 'smarty_internal_parsetree.php';
-}
+}*/
 
 $debug_tpl_dir = __DIR__ . DIRECTORY_SEPARATOR;
 

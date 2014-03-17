@@ -1,8 +1,3 @@
-*.phar*
 demo/cache/*
 demo/templates_c/*
-libs/*
-libs/!readme.txt
-compiled/*
-compiled/!.gitkeep
 .idea
