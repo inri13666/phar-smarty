@@ -16,7 +16,7 @@ require_once $basePath . 'Smarty.class.php';
     include_once SMARTY_SYSPLUGINS_DIR . 'smarty_internal_parsetree.php';
 }*/
 
-$debug_tpl_dir = __DIR__ . DIRECTORY_SEPARATOR;
+$debug_tpl_dir = dirname(__FILE__) . DIRECTORY_SEPARATOR;
 
 if (!is_writable($debug_tpl_dir)) {
     $debug_tpl_dir = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
